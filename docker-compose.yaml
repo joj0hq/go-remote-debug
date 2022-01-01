@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - 8080:8080
+      - 2345:2345 # port for delve
+    command: air -c .air.toml -d
+    volumes:
+      - .:/go/src/app:cached
+    # https://docs.docker.com/engine/security/seccomp/
+    security_opt:
+      - apparmor:unconfined
+    # https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
+    cap_add:
+      - SYS_PTRACE
