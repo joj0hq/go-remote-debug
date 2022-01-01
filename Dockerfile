@@ -5,7 +5,7 @@ ENV GOOS=linux
 ENV GOARCH=amd64
 ENV APP=app
 
-WORKDIR /go/src/$APP
+WORKDIR /dev/$APP
 
 COPY . .
 

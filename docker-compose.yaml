@@ -11,7 +11,7 @@ services:
       - 2345:2345 # port for delve
     command: air -c .air.toml -d
     volumes:
-      - .:/go/src/app:cached
+      - .:/dev/app:cached
     # https://docs.docker.com/engine/security/seccomp/
     security_opt:
       - apparmor:unconfined
